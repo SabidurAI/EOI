@@ -47,7 +47,6 @@ const ExperienciaRelevante = () => {
   };
 
   const handleAddExperience = (experience) => {
-    // Add the selected experience to the document
     console.log('Added experience:', experience);
   };
 
@@ -68,28 +67,30 @@ const ExperienciaRelevante = () => {
         </Grid>
       </Grid>
 
-      <Slider {...settings}>
-        {experiences.map((experience) => (
-          <div key={experience.id}>
-            <Card style={{ margin: '10px' }}>
-              <CardContent>
-                <Typography variant="h6">{experience.title}</Typography>
-                <Typography variant="body2" color="textSecondary">
-                  {experience.description}
-                </Typography>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => handleAddExperience(experience)}
-                  style={{ marginTop: '10px' }}
-                >
-                  Add to Document
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        ))}
-      </Slider>
+      <div style={{ height: '400px' }}>
+        <Slider {...settings}>
+          {experiences.map((experience) => (
+            <div key={experience.id}>
+              <Card style={{ margin: '10px' }}>
+                <CardContent>
+                  <Typography variant="h6">{experience.title}</Typography>
+                  <Typography variant="body2" color="textSecondary">
+                    {experience.description}
+                  </Typography>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => handleAddExperience(experience)}
+                    style={{ marginTop: '10px' }}
+                  >
+                    Add to Document
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 };

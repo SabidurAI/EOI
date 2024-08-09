@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Card, CardContent, Typography, Button } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.min.css';
 
 // Sample projects data
 const projects = [
@@ -12,13 +11,18 @@ const projects = [
 ];
 
 const ProyectosSimilares = ({ onSelect }) => {
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProjects, setSelectedProjects] = useState([]);
 
   const handleSelect = (project) => {
-    setSelectedProject(project);
-    if (onSelect) {
-      onSelect(project);
-    }
+    setSelectedProjects((prevSelectedProjects) => {
+      if (prevSelectedProjects.some((p) => p.id === project.id)) {
+        // If project is already selected, remove it
+        return prevSelectedProjects.filter((p) => p.id !== project.id);
+      } else {
+        // Otherwise, add it to the selection
+        return [...prevSelectedProjects, project];
+      }
+    });
   };
 
   return (
@@ -42,11 +46,11 @@ const ProyectosSimilares = ({ onSelect }) => {
                 </Typography>
                 <Button
                   variant="contained"
-                  color={selectedProject?.id === project.id ? 'secondary' : 'primary'}
+                  color={selectedProjects.some((p) => p.id === project.id) ? 'secondary' : 'primary'}
                   sx={{ marginTop: 2 }}
                   onClick={() => handleSelect(project)}
                 >
-                  {selectedProject?.id === project.id ? 'Selected' : 'Select'}
+                  {selectedProjects.some((p) => p.id === project.id) ? 'Selected' : 'Select'}
                 </Button>
               </CardContent>
             </Card>

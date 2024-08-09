@@ -9,7 +9,8 @@ import {
   InputLabel,
   IconButton,
 } from '@mui/material';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 
 function ImageUploadModal({ open, onClose, onSubmit }) {
@@ -75,12 +76,14 @@ function ImageUploadModal({ open, onClose, onSubmit }) {
         />
 
         {/* Date Picker Section */}
-        <DatePicker
-          label="Select Date"
-          value={selectedDate}
-          onChange={(newValue) => setSelectedDate(newValue)}
-          renderInput={(params) => <TextField {...params} fullWidth margin="normal" />}
-        />
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <DatePicker
+            label="Select Date"
+            value={selectedDate}
+            onChange={(newValue) => setSelectedDate(newValue)}
+            renderInput={(params) => <TextField {...params} fullWidth margin="normal" />}
+          />
+        </LocalizationProvider>
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose} color="primary">
