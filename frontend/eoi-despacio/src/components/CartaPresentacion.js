@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Grid, Box } from '@mui/material';
+import Layout from './Layout/Layout';
 
 function CartaPresentacion() {
   const [contratante, setContratante] = useState('');
@@ -14,6 +15,7 @@ function CartaPresentacion() {
   };
 
   return (
+    <Layout>
     <Box p={2}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
@@ -36,6 +38,7 @@ function CartaPresentacion() {
         </Grid>
       </Grid>
     </Box>
+    </Layout>
   );
 }
 

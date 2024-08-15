@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, Typography } from '@mui/material';
+import Layout from './Layout/Layout';
 
 const EntendimientoProyecto = ({ onSubmit }) => {
   const [text, setText] = useState('');
@@ -14,6 +15,7 @@ const EntendimientoProyecto = ({ onSubmit }) => {
   };
 
   return (
+    <Layout>
     <Box sx={{ mt: 4 }}>
       <Typography variant="h6" gutterBottom>
         Entendimiento del Proyecto
@@ -32,6 +34,7 @@ const EntendimientoProyecto = ({ onSubmit }) => {
         Guardar
       </Button>
     </Box>
+    </Layout>
   );
 };
 
